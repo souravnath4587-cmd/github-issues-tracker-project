@@ -1,5 +1,8 @@
 console.log("js connected...");
 
+
+
+
 const getServerIssuesData= () =>{
     const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
     fetch(url)
@@ -67,6 +70,48 @@ const displayServerIssuesData =(issues)=>{
     })
     console.log(issues);
     
+}
+
+
+const selected=(id)=>{
+    console.log('button is clicked', id);
+    document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'))
+    
+    
+    if(id === 'open'){
+        document.getElementById('open').classList.add('active');
+        filteredData(id);
+    }
+    else if(id === 'closed'){
+        document.getElementById('close').classList.add('active');
+        filteredData(id);
+    }else{
+        document.getElementById('all').classList.add('active');
+        filteredData(id);
+
+    }
+}
+
+const filteredData=(id)=>{
+    console.log(id);
+    const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const allIssues = data.data;
+            if(id === 'open' || id === 'closed'){
+                const filters = allIssues.filter(item => item.status === id);
+                totalCountData(filters)   
+                displayServerIssuesData(filters) 
+
+            }else{
+                totalCountData(allIssues)
+                displayServerIssuesData(allIssues)
+                
+            }
+            
+            
+        })
 }
 
 getServerIssuesData();

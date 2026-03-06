@@ -34,9 +34,9 @@
     </header>
     <main class="container mx-auto my-14">
         <section class="tab_section flex flex-row gap-4 justify-start items-center p-4 bg-white rounded-xl shadow-md">
-            <button class="btn capitalize"> all</button>
-            <button class="btn capitalize"> open</button>
-            <button class="btn capitalize"> close</button>
+            <button id="all" onclick="selected('all')" class="btn capitalize active"> all</button>
+            <button id="open" onclick="selected('open')"  class="btn capitalize"> open</button>
+            <button id="close" onclick="selected('closed')"  class="btn capitalize"> close</button>
         </section>
         <section class="my-4 bg-white">
             <div class="section_header flex flex-row justify-between items-center p-4 rounded-t-xl shadow-sm">

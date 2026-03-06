@@ -2,3 +2,8 @@
 body{
     background-color: #f8fafc;
 }
+.active {
+  background-color: #422ad5;
+  color: white;
+}
+
