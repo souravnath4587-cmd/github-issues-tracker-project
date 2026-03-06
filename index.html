@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker</title>
+
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+    <!-- Css Link  -->
+     <link rel="stylesheet" href="./style/style.css">
+    
+    <!-- daisy and Tailwind Css Link  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome Icon  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+
+
+</head>
+<body>
+    <header>
+        <div class="navbar bg-base-100 shadow-sm flex flex-row justify-between">
+            <div class="flex flex-row gap-2">
+                <img class="w-[30px]" src="./assets/github-logo.png" alt="Site Logo">
+                <a class="text-xl font-bold">GitHub Issues Tracker</a>
+            </div>
+            <div class="flex gap-2">
+                <input type="text" placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" />
+                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+            </div>
+        </div>
+    </header>
+    <main class="container mx-auto my-14">
+        <section class="tab_section flex flex-row gap-4 justify-start items-center p-4 bg-white rounded-xl shadow-md">
+            <button class="btn capitalize"> all</button>
+            <button class="btn capitalize"> open</button>
+            <button class="btn capitalize"> close</button>
+        </section>
+        <section class="my-4 bg-white">
+            <div class="section_header flex flex-row justify-between items-center p-4 rounded-t-xl shadow-sm">
+                <div class="header_left flex flex-row justify-start items-center gap-2">
+                    <div class="image p-2 rounded-full bg-[#ECE4FF]">
+                        <img src="./assets/Aperture.png" alt="">
+                    </div>
+                    <div id="header_title">
+                        <!-- <h2 class="font-bold text-[20px]">50 Issues</h2>
+                        <p class="text-[#64748b]">Track and manage your project issues</p> -->
+                    </div>
+                </div>
+                <div class="header_left">
+                    <ul class="list-disc flex flex-row gap-10">
+                        <li class="font-bold marker:text-green-800 ">Open</li>
+                        <li class="font-bold marker:text-blue-800 ">Close</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-gray-400">
+            <div id="section_body" class="section_body bg-[#fbfbfb] p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- <div class="section_card bg-white rounded-xl shadow-sm border-t-4 border-t-red-800">
+                    <div class="card_header flex flex-row justify-between items-center p-4">
+                        <img src="./assets/Open-Status.png" alt="Open Status icon">
+                        <span class="badge badge-soft badge-warning">High</span>
+                    </div>
+                    <div class="card_body space-y-2 p-4">
+                        <h2 class="text-2xl font-bold">Fix navigation menu on mobile devices</h2>
+                        <p class=" text-[#64748b]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                        <div class="body_badge">
+                            <span class="badge badge-warning uppercase"><i class="fa-solid fa-bug"></i>bugs</span>
+                            <span class="badge badge-warning uppercase"><i class="fa-solid fa-handshake"></i>help wanted</span>
+                        </div>
+                    </div>
+                    <hr class="border-gray-400">
+                    <div class="card_footer space-y-2 p-4">
+                        <p>#1
+by john_doe</p>
+<p>1/15/2024</p>
+                    </div>
+                </div> -->
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+
+    <script src="./script/script.js"></script>
+</body>
+</html>
