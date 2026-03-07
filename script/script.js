@@ -64,24 +64,6 @@ const totalCountData= (data)=>{
     `;
 }
 
-// {
-// "id": 1,
-// "title": "Fix navigation menu on mobile devices",
-// "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-// "status": "open",
-// "labels": [
-// "bug",
-// "help wanted"
-// ],
-// "priority": "high",
-// "author": "john_doe",
-// "assignee": "jane_smith",
-// "createdAt": "2024-01-15T10:30:00Z",
-// "updatedAt": "2024-01-15T10:30:00Z"
-// },
-
-//  <span class="badge badge-warning uppercase"><i class="fa-solid fa-bug"></i>${item.labels[0]}</span>
-//  <span class="badge badge-warning uppercase"><i class="fa-solid fa-handshake"></i></span>
 
 const displayServerIssuesData =(issues)=>{
     
@@ -89,7 +71,7 @@ const displayServerIssuesData =(issues)=>{
     sectionId.innerHTML = '';
     issues.forEach(item =>{
         sectionId.innerHTML += `
-        <div class="section_card bg-white rounded-xl shadow-sm border-t-4 ${item.status === 'open' ? 'border-green-800' : 'border-blue-800' }">
+        <div onclick='handlePopUp(${item.id})' class="section_card  bg-white rounded-xl shadow-sm border-t-4 ${item.status === 'open' ? 'border-green-800' : 'border-blue-800' }">
                     <div class="card_header flex flex-row justify-between items-center p-4">
                         <img src=${item.status === 'open' ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"} alt="${item.status} Status icon">
                         <span class="badge badge-soft badge-warning">${item.priority}</span>
@@ -115,6 +97,83 @@ const displayServerIssuesData =(issues)=>{
     
 }
 
+// const loadWordDetail = async (id) => {
+//   const url = `https://openapi.programming-hero.com/api/word/${id}`;
+//   const res = await fetch(url);
+//   const details = await res.json();
+//   displayWordDetails(details.data);
+// };
+
+const handlePopUp=(id)=>{
+    console.log("Pop up Show...", id);
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayIssuesDetail(data.data))
+    
+}
+// const displayWordDetails = (word) => {
+//   console.log(word);
+//   const detailsBox = document.getElementById("details-container");
+//   detailsBox.innerHTML = `
+//     <div class="">
+//             <h2 class="text-2xl font-bold">
+//               ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${
+//     word.pronunciation
+//   })
+//             </h2>
+//           </div>
+//           <div class="">
+//             <h2 class="font-bold">Meaning</h2>
+//             <p>${word.meaning}</p>
+//           </div>
+//           <div class="">
+//             <h2 class="font-bold">Example</h2>
+//             <p>${word.sentence}</p>
+//           </div>
+//           <div class="">
+//             <h2 class="font-bold">Synonym</h2>
+//             <div class="">${createElements(word.synonyms)}</div>
+//           </div>
+    
+    
+//     `;
+//   document.getElementById("word_modal").showModal();
+// };
+const displayIssuesDetail= (issue)=> {
+    console.log(issue);
+    const detailsCard = document.getElementById('detail_container');
+    detailsCard.innerHTML = '';
+    const createElement = document.createElement('div');
+    createElement.classList.add('space-y-4');
+    createElement.innerHTML += `
+                        <h1 class="text-2xl font-bold">${issue.title}</h1>
+                        <div class="card_badge flex flex-row gap-8 justify-start items-center">
+                            <span class="badge badge-success">${issue.status}</span> 
+                            <li class="list-disc text-[#64748b]  text-[12px]"> Opened by : ${issue.author} </li>
+                            <li class="list-disc text-[#64748b]  text-[12px]"> ${issue.updatedAt.split('T')[0]}</li>
+                        </div>
+                        <div class="badge_property">
+                            <span class="badge badge-soft badge-success">${issue.labels[0]}</span>
+                            <span class="badge badge-soft badge-warning">${issue.labels[1]}</span>
+                        </div>
+                        <p class="text-[#64748b]">${issue.description}</p>
+                        <div class="card_client p-6 bg-[#f8fafc] flex flex-row">
+                            <div class="w-1/2">
+                                <p class="text-[#64748b]">Assignee:</p>
+                                <h2 class="font-bold capitalize">${issue.assignee}</h2>
+                            </div>
+                            <div class="w-1/2">
+                                <p class="text-[#64748b]">Priority:</p>
+                                <span class="badge badge-error">${issue.priority}</span>
+                            </div>
+
+                        </div>
+    `
+    detailsCard.append(createElement);
+    document.getElementById("word_modal").showModal();
+    
+}
 
 const selected=(id)=>{
     console.log('button is clicked', id);

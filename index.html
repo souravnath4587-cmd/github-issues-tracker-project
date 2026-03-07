@@ -41,6 +41,7 @@
             <button id="all" onclick="selected('all')" class="btn capitalize active"> all</button>
             <button id="open" onclick="selected('open')"  class="btn capitalize"> open</button>
             <button id="close" onclick="selected('closed')"  class="btn capitalize"> close</button>
+            <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
         </section>
         <section class="my-4 bg-white">
             <div class="section_header flex flex-row justify-between items-center p-4 rounded-t-xl shadow-sm">
@@ -83,6 +84,43 @@ by john_doe</p>
                     </div>
                 </div> -->
             </div>
+            
+            <dialog id="word_modal" class="modal">
+                <div class="modal-box">
+                    <div id="detail_container" class=""> 
+                        <!-- <h1 class="text-2xl font-bold">Fix broken image uploads</h1>
+                        <div class="card_badge flex flex-row gap-8 justify-start items-center">
+                            <span class="badge badge-success">Opened</span> 
+                            <li class="list-disc text-[#64748b] text-[10px]"> Opened by Fahim Ahamed</li>
+                            <li class="list-disc text-[#64748b] text-[10px]"> 22/2/2026</li>
+                        </div>
+                        <div class="badge_property">
+                            <span class="badge badge-soft badge-success">Bugs</span>
+                            <span class="badge badge-soft badge-warning">Help Wanted</span>
+                        </div>
+                        <p class="text-[#64748b]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+                        <div class="card_client p-6 bg-[#f8fafc] flex flex-row">
+                            <div class="w-1/2">
+                                <p class="text-[#64748b]">Assignee:</p>
+                                <h2 class="font-bold">Fahim Ahamed</h2>
+                            </div>
+                            <div class="w-1/2">
+                                <p class="text-[#64748b]">Priority:</p>
+                                <span class="badge badge-error">High</span>
+                            </div>
+
+                        </div> -->
+                    </div>
+                        <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn btn-primary">Close</button>
+                        </form>
+                        </div>
+                   
+                    
+                </div>
+            </dialog>
 
         </section>
 
