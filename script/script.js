@@ -1,6 +1,7 @@
 
 const handleSearch = () => {
     // https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
+    handleSpinner(true);
     const searchId = document.getElementById('searchIssues');
     const value = searchId.value.trim().toLowerCase();
     console.log(value);
@@ -12,11 +13,20 @@ const handleSearch = () => {
             totalCountData(data.data)
             displayServerIssuesData(data.data);
         })
-    
+    handleSpinner(false);
 }
 
+const handleSpinner= (status)=>{
+    if(status === true){
+        document.getElementById('spinner').classList.remove('hidden');
+        
+    }else{
+        document.getElementById('spinner').classList.add('hidden')
+    }
+}
 
 const getServerIssuesData= () =>{
+    handleSpinner(true);
     const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
     fetch(url)
         .then(res => res.json())
@@ -81,6 +91,7 @@ const displayServerIssuesData =(issues)=>{
                 </div>
         `
     })
+    handleSpinner(false)
     console.log(issues);
     
 }
@@ -88,19 +99,24 @@ const displayServerIssuesData =(issues)=>{
 
 const selected=(id)=>{
     console.log('button is clicked', id);
+    
+
     document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'))
     
     
     if(id === 'open'){
         document.getElementById('open').classList.add('active');
         filteredData(id);
+        handleSpinner(true);
     }
     else if(id === 'closed'){
         document.getElementById('close').classList.add('active');
         filteredData(id);
+        handleSpinner(true);
     }else{
         document.getElementById('all').classList.add('active');
         filteredData(id);
+        handleSpinner(true);
 
     }
 }
@@ -125,6 +141,7 @@ const filteredData=(id)=>{
             
             
         })
+    handleSpinner(false);
 }
 
 getServerIssuesData();
