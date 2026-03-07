@@ -1,3 +1,14 @@
+if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "./login/login.html"; // Redirect to login if not logged in
+}
+
+const logout=()=>{
+    if(localStorage.getItem('isLoggedIn') === 'true'){
+        console.log('probes koreche');
+        window.location.href = "./index.html";
+        localStorage.setItem('isLoggedIn', 'false');
+    }
+}
 
 const handleSearch = () => {
     // https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
@@ -66,6 +77,7 @@ const totalCountData= (data)=>{
 //  <span class="badge badge-warning uppercase"><i class="fa-solid fa-handshake"></i></span>
 
 const displayServerIssuesData =(issues)=>{
+    
     const sectionId = document.getElementById('section_body');
     sectionId.innerHTML = '';
     issues.forEach(item =>{
