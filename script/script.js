@@ -1,6 +1,19 @@
-console.log("js connected...");
 
-
+const handleSearch = () => {
+    // https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
+    const searchId = document.getElementById('searchIssues');
+    const value = searchId.value.trim().toLowerCase();
+    console.log(value);
+    const searchUrl = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${value}`
+    fetch(searchUrl)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            totalCountData(data.data)
+            displayServerIssuesData(data.data);
+        })
+    
+}
 
 
 const getServerIssuesData= () =>{
@@ -50,7 +63,7 @@ const displayServerIssuesData =(issues)=>{
         <div class="section_card bg-white rounded-xl shadow-sm border-t-4 ${item.status === 'open' ? 'border-green-800' : 'border-blue-800' }">
                     <div class="card_header flex flex-row justify-between items-center p-4">
                         <img src=${item.status === 'open' ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"} alt="${item.status} Status icon">
-                        <span class="badge badge-soft badge-warning">High</span>
+                        <span class="badge badge-soft badge-warning">${item.priority}</span>
                     </div>
                     <div class="card_body space-y-2 p-4">
                         <h2 class="text-2xl font-bold">${item.title}</h2>
