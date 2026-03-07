@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub Issues Tracker</title>
+    <link rel="shortcut icon" href="../assets/github-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style/style.css">
+    
+    <!-- daisy and Tailwind Css Link  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome Icon  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
 </head>
 <body>
-    
+    <section id="login" class="">
+        <div class="login_card w-[380px] sm:w-[450px] mt-10  mx-auto border-2 rounded-xl shadow-2xl p-6">
+            <div class="card_header flex flex-col justify-center items-center">
+                <img src="../assets/github-logo.png" alt="Site Logo image">
+                <h2>GitHub Issues Tracker</h2>
+                <p>Sign in to manage your issues</p>
+            </div>
+            <div class="card_body">
+                <fieldset class="fieldset w-full p-4">
+                    <!-- <legend class="fieldset-legend">Login</legend> -->
+
+                    <label class="label">User Name</label>
+                    <input type="text" class="input w-full" placeholder="Enter Your Name" />
+
+                    <label class="label">Password</label>
+                    <input type="password" class="input w-full" placeholder="Enter Your Password" />
+
+                    <button class="btn btn-primary mt-4"><a href="../index.html">Login</a></button>
+                </fieldset>
+            </div>
+            <hr class="">
+            <div class="card_footer text-center">
+                <p>Demo Credentials:</p>
+                <br>
+                <div class="demo">
+                    <p><span>User Name :</span>admin</p>
+                    <p><span>Password :</span>admin123</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="login.js"></script>
 </body>
 </html>

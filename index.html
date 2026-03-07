@@ -29,11 +29,12 @@
             <div class="flex gap-2">
                 <input id="searchIssues" type="text" placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" />
                 <button onclick="handleSearch()" type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+                <button onclick="logout()" type="button" class="btn btn-secondary"><a href="./login/login.html">Log Out</a></button>
             </div>
         </div>
     </header>
     <main class="container mx-auto my-14">
-        <div id="spinner" class="loading mx-auto">
+        <div id="spinner" class="loading ">
             <span class="loading loading-spinner text-primary"></span>
         </div>
         <section class="tab_section flex flex-row gap-4 justify-start items-center p-4 bg-white rounded-xl shadow-md">
