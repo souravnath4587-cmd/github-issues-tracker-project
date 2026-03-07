@@ -16,15 +16,22 @@ const handleSearch = () => {
     const searchId = document.getElementById('searchIssues');
     const value = searchId.value.trim().toLowerCase();
     console.log(value);
-    const searchUrl = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${value}`
-    fetch(searchUrl)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            totalCountData(data.data)
-            displayServerIssuesData(data.data);
-        })
-    handleSpinner(false);
+    if(value === ''){
+        alert("Please type a value");
+        handleSpinner(false)
+        return;
+    }else{
+        const searchUrl = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${value}`
+        fetch(searchUrl)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                totalCountData(data.data)
+                displayServerIssuesData(data.data);
+            })
+            
+        }
+        handleSpinner(false);
 }
 
 const handleSpinner= (status)=>{
