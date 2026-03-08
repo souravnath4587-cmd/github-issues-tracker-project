@@ -71,7 +71,7 @@ const displayServerIssuesData =(issues)=>{
     sectionId.innerHTML = '';
     issues.forEach(item =>{
         sectionId.innerHTML += `
-        <div onclick='handlePopUp(${item.id})' class="section_card  bg-white rounded-xl shadow-sm border-t-4 ${item.status === 'open' ? 'border-green-800' : 'border-blue-800' }">
+        <div onclick='handlePopUp(${item.id})' class="section_card  bg-white rounded-xl shadow-sm border-t-4 ${item.status === 'open' ? 'border-green-800' : 'border-purple-800' }">
                     <div class="card_header flex flex-row justify-between items-center p-4">
                         <img src=${item.status === 'open' ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"} alt="${item.status} Status icon">
                         <span class="badge badge-soft badge-warning">${item.priority}</span>
@@ -86,8 +86,14 @@ const displayServerIssuesData =(issues)=>{
                     </div>
                     <hr class="border-gray-400">
                     <div class="card_footer space-y-2 p-4">
-                        <p class=" text-[#64748b]">1# by : ${item.author}</p>
-                        <p class=" text-[#64748b]">${item.updatedAt.split('T')[0]}</p>
+                        <div class='flex flex-row justify-between'>
+                        <p class=" text-[#64748b] font-bold">${item.id}# by: ${item.author}</p>
+                        <p class=" text-[#64748b]">${item.createdAt.split('T')[0]}</p>
+                        </div>
+                        <div class='flex flex-row justify-between'>
+                        <p class=" text-[#64748b] font-bold capitalize">${item.assignee}</p>
+                        <p class=" text-[#64748b]"><span class='inline sm:hidden'>Update At : </span>${item.updatedAt.split('T')[0]}</p>
+                        </div>
                     </div>
                 </div>
         `
@@ -112,34 +118,7 @@ const handlePopUp=(id)=>{
         .then(data => displayIssuesDetail(data.data))
     
 }
-// const displayWordDetails = (word) => {
-//   console.log(word);
-//   const detailsBox = document.getElementById("details-container");
-//   detailsBox.innerHTML = `
-//     <div class="">
-//             <h2 class="text-2xl font-bold">
-//               ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${
-//     word.pronunciation
-//   })
-//             </h2>
-//           </div>
-//           <div class="">
-//             <h2 class="font-bold">Meaning</h2>
-//             <p>${word.meaning}</p>
-//           </div>
-//           <div class="">
-//             <h2 class="font-bold">Example</h2>
-//             <p>${word.sentence}</p>
-//           </div>
-//           <div class="">
-//             <h2 class="font-bold">Synonym</h2>
-//             <div class="">${createElements(word.synonyms)}</div>
-//           </div>
-    
-    
-//     `;
-//   document.getElementById("word_modal").showModal();
-// };
+
 const displayIssuesDetail= (issue)=> {
     console.log(issue);
     const detailsCard = document.getElementById('detail_container');
@@ -184,15 +163,21 @@ const selected=(id)=>{
     
     if(id === 'open'){
         document.getElementById('open').classList.add('active');
+        document.getElementById('openText').classList.add('text-green-800');
+        document.getElementById('closedText').classList.remove('text-purple-800');
         filteredData(id);
         handleSpinner(true);
     }
     else if(id === 'closed'){
         document.getElementById('close').classList.add('active');
+        document.getElementById('openText').classList.remove('text-green-800');
+        document.getElementById('closedText').classList.add('text-purple-800');
         filteredData(id);
         handleSpinner(true);
     }else{
         document.getElementById('all').classList.add('active');
+        document.getElementById('openText').classList.remove('text-green-800');
+        document.getElementById('closedText').classList.remove('text-purple-800');
         filteredData(id);
         handleSpinner(true);
 

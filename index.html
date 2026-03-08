@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Issues Tracker</title>
-
+    <!-- FavIcon Link  -->
     <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
     <!-- Css Link  -->
      <link rel="stylesheet" href="./style/style.css">
-    
     <!-- daisy and Tailwind Css Link  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Font Awesome Icon  -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <!-- Google Font Link  -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
 
 
 </head>
 <body>
-    <header>
-        <div class="navbar bg-base-100 shadow-sm flex flex-row justify-between">
+    <header >
+        <div class="navbar bg-base-100 shadow-sm flex flex-row justify-between fixed top-0">
             <div class="flex flex-row gap-2">
                 <img class="w-[30px]" src="./assets/github-logo.png" alt="Site Logo">
                 <a class="text-xl font-bold"><span class="hidden md:block">GitHub Issues Tracker</span><span class="block md:hidden">GIT</span></a>
@@ -33,7 +35,7 @@
             </div>
         </div>
     </header>
-    <main class="container mx-auto my-14">
+    <main class="container mx-auto pt-20">
         <div id="spinner" class="loading ">
             <span class="loading loading-spinner text-primary"></span>
         </div>
@@ -41,7 +43,6 @@
             <button id="all" onclick="selected('all')" class="btn capitalize active"> all</button>
             <button id="open" onclick="selected('open')"  class="btn capitalize"> open</button>
             <button id="close" onclick="selected('closed')"  class="btn capitalize"> close</button>
-            <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
         </section>
         <section class="my-4 bg-white">
             <div class="section_header flex flex-row justify-between items-center p-4 rounded-t-xl shadow-sm">
@@ -50,66 +51,23 @@
                         <img src="./assets/Aperture.png" alt="">
                     </div>
                     <div id="header_title">
-                        <!-- <h2 class="font-bold text-[20px]">50 Issues</h2>
-                        <p class="text-[#64748b]">Track and manage your project issues</p> -->
+                        
                     </div>
                 </div>
                 <div class="header_left">
                     <ul class="list-disc flex flex-row gap-10">
-                        <li class="font-bold marker:text-green-800 ">Open</li>
-                        <li class="font-bold marker:text-blue-800 ">Close</li>
+                        <li id="openText" class="font-bold marker:text-green-800 ">Open</li>
+                        <li id="closedText" class="font-bold marker:text-blue-800 ">Close</li>
                     </ul>
                 </div>
             </div>
             <hr class="border-gray-400">
-            <div id="section_body" class="section_body bg-[#fbfbfb] p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- <div class="section_card bg-white rounded-xl shadow-sm border-t-4 border-t-red-800">
-                    <div class="card_header flex flex-row justify-between items-center p-4">
-                        <img src="./assets/Open-Status.png" alt="Open Status icon">
-                        <span class="badge badge-soft badge-warning">High</span>
-                    </div>
-                    <div class="card_body space-y-2 p-4">
-                        <h2 class="text-2xl font-bold">Fix navigation menu on mobile devices</h2>
-                        <p class=" text-[#64748b]">The navigation menu doesn't collapse properly on mobile devices...</p>
-                        <div class="body_badge">
-                            <span class="badge badge-warning uppercase"><i class="fa-solid fa-bug"></i>bugs</span>
-                            <span class="badge badge-warning uppercase"><i class="fa-solid fa-handshake"></i>help wanted</span>
-                        </div>
-                    </div>
-                    <hr class="border-gray-400">
-                    <div class="card_footer space-y-2 p-4">
-                        <p>#1
-by john_doe</p>
-<p>1/15/2024</p>
-                    </div>
-                </div> -->
+            <div id="section_body" class="section_body bg-[#fbfbfb] p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             </div>
             
             <dialog id="word_modal" class="modal">
                 <div class="modal-box">
-                    <div id="detail_container" class=""> 
-                        <!-- <h1 class="text-2xl font-bold">Fix broken image uploads</h1>
-                        <div class="card_badge flex flex-row gap-8 justify-start items-center">
-                            <span class="badge badge-success">Opened</span> 
-                            <li class="list-disc text-[#64748b] text-[10px]"> Opened by Fahim Ahamed</li>
-                            <li class="list-disc text-[#64748b] text-[10px]"> 22/2/2026</li>
-                        </div>
-                        <div class="badge_property">
-                            <span class="badge badge-soft badge-success">Bugs</span>
-                            <span class="badge badge-soft badge-warning">Help Wanted</span>
-                        </div>
-                        <p class="text-[#64748b]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
-                        <div class="card_client p-6 bg-[#f8fafc] flex flex-row">
-                            <div class="w-1/2">
-                                <p class="text-[#64748b]">Assignee:</p>
-                                <h2 class="font-bold">Fahim Ahamed</h2>
-                            </div>
-                            <div class="w-1/2">
-                                <p class="text-[#64748b]">Priority:</p>
-                                <span class="badge badge-error">High</span>
-                            </div>
-
-                        </div> -->
+                    <div id="detail_container" > 
                     </div>
                         <div class="modal-action">
                         <form method="dialog">
