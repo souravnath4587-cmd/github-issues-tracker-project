@@ -134,7 +134,7 @@ const displayIssuesDetail= (issue)=> {
                         </div>
                         <div class="badge_property">
                             <span class="badge badge-soft badge-success">${issue.labels[0]}</span>
-                            <span class="badge badge-soft badge-warning">${issue.labels[1]}</span>
+                            ${issue.labels[1] ? `<span class="badge badge-soft badge-warning">${issue.labels[1]}</span>` : ''}
                         </div>
                         <p class="text-[#64748b]">${issue.description}</p>
                         <div class="card_client p-6 bg-[#f8fafc] flex flex-row">
